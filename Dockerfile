@@ -55,7 +55,8 @@ USER python
 COPY --chown=python:python requirements*.txt ./
 COPY --chown=python:python bin/ ./bin
 
-RUN chmod 0755 bin/* && bin/pip3-install
+RUN chmod 0755 bin/*
+RUN pip install --no-warn-script-location --no-cache-dir --user -r requirements.txt
 
 ARG DEBUG="false"
 ENV DEBUG="${DEBUG}" \
